@@ -36,11 +36,11 @@ def get_weather(city: str) -> str:
     return f"The weather in {city} is {random.choice(choices)}."
 
 
-spanish_agent = Agent(
-    name="Spanish",
-    handoff_description="A spanish speaking agent.",
+japanese_agent = Agent(
+    name="Japanese",
+    handoff_description="A Japanese speaking agent.",
     instructions=prompt_with_handoff_instructions(
-        "You're speaking to a human, so be polite and concise. Speak in Spanish.",
+        "You're speaking to a human, so be polite and concise. Speak in Japanese.",
     ),
     model="gpt-4o-mini",
 )
@@ -48,10 +48,10 @@ spanish_agent = Agent(
 agent = Agent(
     name="Assistant",
     instructions=prompt_with_handoff_instructions(
-        "You're speaking to a human, so be polite and concise. If the user speaks in Spanish, handoff to the spanish agent.",
+        "You're speaking to a human, so be polite and concise. If the user speaks in Japanese, handoff to the spanish agent.",
     ),
     model="gpt-4o-mini",
-    handoffs=[spanish_agent],
+    handoffs=[japanese_agent],
     tools=[get_weather],
 )
 
